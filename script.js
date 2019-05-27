@@ -28,6 +28,7 @@ $("#actSubmitBtn").click(function() {
             success: function(result) { 
                if (result){console.log('succes')};
                console.log(result);
+               createTaskFromObj(result); 
             },
    
             //Upon error
@@ -35,18 +36,6 @@ $("#actSubmitBtn").click(function() {
                alert("Status: " + textStatus); alert("Error: " + errorThrown); 
                }  
             })
-   
-
-
-            
-        //Assign urgency background color
-        if (actUrgency == "middel") {
-            $("#rowOne").append("<span id='" + idClass + "' class='urgencyNormal' draggable=true ondragstart=drag(event)>" + actValue + "</span>");
-        } else if(actUrgency == "hoog") {
-            $("#rowOne").append("<span id='" + idClass + "' class='urgencyHigh' draggable=true ondragstart=drag(event)>" + actValue + "</span>");
-        } else {
-            $("#rowOne").append("<span id='" + idClass + "' class='urgencyLow' draggable=true ondragstart=drag(event)>" + actValue + "</span>");
-        }
 
     //Close Modal and reset modal fields 
     $("#inputAct").val("");
@@ -79,3 +68,14 @@ function drop(ev) {
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
   }
+
+//Create new task based on object
+function createTaskFromObj(obj) {
+    if (obj.urgencyvalue == "middel") {
+        $("#rowOne").append("<span id='" + obj.id + "' class='urgencyNormal' draggable=true ondragstart=drag(event)>" + obj.textvalue + "</span>");
+    } else if(obj.urgencyvalue == "hoog") {
+        $("#rowOne").append("<span id='" + obj.id + "' class='urgencyHigh' draggable=true ondragstart=drag(event)>" + obj.textvalue + "</span>");
+    } else {
+        $("#rowOne").append("<span id='" + obj.id + "' class='urgencyLow' draggable=true ondragstart=drag(event)>" + obj.textvalue + "</span>");
+    }
+}  

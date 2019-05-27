@@ -4,10 +4,42 @@ $(document).ready(function(){
     $(".inlogBtn").click(function() {
         let username = $("#username").val();
         let pswrd = $("#pswrd").val();
-        alert(username + pswrd);
 
-        if (username == "" || pswrd == "") {
-            alert("WEL EVEN ALLE VELDEN INVULLEN A.U.B.")
-        }
+        //Create json object
+        let jsonObj = {};
+        jsonObj.username = username;
+        jsonObj.passwrd = pswrd;
+
+        //Ajaxcall to create new record in database
+        $.ajax({
+            url: "login.php",
+            data: {jsonObj: JSON.stringify(jsonObj)},
+            type: "POST",
+            dataType : "JSON",
+   
+            //Upon succes
+            success: function(result) { 
+               if (result){console.log('succes')};
+               console.log(result);
+               if (result.passwrd === pswrd){ 
+                   window.open("http://192.168.2.48/Projectplanning-met-backend/index.html", "_self");
+                } else {
+                    alert("Verkeerd wachtwoord of gebruiker ingevoerd. Probeer het nogmaals..")
+                    resetFields();
+                };
+            },
+   
+            //Upon error
+            error: function(XMLHttpRequest, textStatus, errorThrown) { 
+               alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+               }  
+            })
     })
 });
+
+//Functions --------------------
+
+function resetFields() {
+    $("#username").val("");
+    $("#pswrd").val("");
+}

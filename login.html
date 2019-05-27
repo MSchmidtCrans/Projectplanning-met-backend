@@ -14,9 +14,9 @@
         <div id="sub" class="smallContainer">
             <form action="loginPHP" method="post" class="loginForm userForm">
                 <h1>Project planning Login</h1>
-                <input type="text" id="username" name="user" placeholder="Gebruikersnaam"></br>
-                <input type="text" id="pswrd" name="ps" placeholder="Wachtwoord">
-                <input type="button" value="Inloggen" class="inlogBtn greenBtn">
+                <input type="text" id="username" name="user" placeholder="Gebruikersnaam" maxlength="25" required></br>
+                <input type="password" id="pswrd" name="ps" placeholder="Wachtwoord" maxlength="25" required>
+                <input type="submit" value="Inloggen" class="inlogBtn greenBtn">
                 <input type="button" value="Nieuwe gebruiker" class="greenBtn" onclick="$('.newUserForm').css('display', 'Block');
                                                                                         $('.loginForm').css('display', 'none')">
             </form>

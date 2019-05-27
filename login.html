@@ -6,20 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="loginscript.js"></script>
     <title>Projecplanning login pagina</title>
 </head>
 <body>
     <div id="main" class="mainContainer">
         <div id="sub" class="smallContainer">
-            <form action="#" method="post" class="loginForm userForm">
+            <form action="loginPHP" method="post" class="loginForm userForm">
                 <h1>Project planning Login</h1>
-                <input type="text" name="userName" placeholder="Gebruikersnaam"></br>
-                <input type="text" name="psWrd" placeholder="Wachtwoord">
+                <input type="text" id="username" name="user" placeholder="Gebruikersnaam"></br>
+                <input type="text" id="pswrd" name="ps" placeholder="Wachtwoord">
                 <input type="button" value="Inloggen" class="inlogBtn greenBtn">
                 <input type="button" value="Nieuwe gebruiker" class="greenBtn" onclick="$('.newUserForm').css('display', 'Block');
                                                                                         $('.loginForm').css('display', 'none')">
             </form>
-            <form action="#" method="post" class="newUserForm userForm" style="display: none;">
+            <form action="newUserPhp" method="post" class="newUserForm userForm" style="display: none;">
                     <h1>Project planning Login</h1>
                     <input type="text" name="newUserName" placeholder="Gewenste gebruikersnaam"></br>
                     <input type="text" name="newPsWrd" placeholder="Nieuw wachtwoord">
@@ -93,13 +94,11 @@ h1 {
     color: white;
     background-color: rgb(63, 243, 63);
     margin-bottom: 15px;
-    border-radius: 5px; 
 }
 
 .redBtn {
     background-color: rgb(221, 43, 43);
     margin-bottom: 15px;
-    border-radius: 5px; 
 }
 
 @media screen and (max-width: 400px) {

@@ -10,6 +10,17 @@
     <script src="script.js"></script>
     <script src="helper.js"></script>
     <title>Projecplanning</title>
+
+    <?php
+    // Start the session
+    session_start();
+    
+    if ($_SESSION['loggedin'] != true) {
+        header( 'Location: loginStart.php' );
+    }
+    
+    ?>
+
 </head>
 <body>
     <div class="header">

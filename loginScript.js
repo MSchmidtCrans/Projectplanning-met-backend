@@ -22,7 +22,7 @@ $(document).ready(function(){
                if (result){console.log('succes')};
                console.log(result);
                if (result.passwrd === pswrd){ 
-                   window.open("http://192.168.2.48/Projectplanning-met-backend/index.html", "_self");
+                   window.open("http://10.1.254.73/Projectplanning-met-backend/index.php", "_self");
                 } else {
                     alert("Verkeerd wachtwoord of gebruiker ingevoerd. Probeer het nogmaals..")
                     resetFields();

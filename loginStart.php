@@ -8,11 +8,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="loginscript.js"></script>
     <title>Projecplanning login pagina</title>
+
+    <?php
+    // Start the session
+    session_start();
+    
+    ?>
+
+    <body>
+    
+
 </head>
 <body>
     <div id="main" class="mainContainer">
         <div id="sub" class="smallContainer">
-            <form action="loginPHP" method="post" class="loginForm userForm">
+            <form action="#" method="post" class="loginForm userForm">
                 <h1>Project planning Login</h1>
                 <input type="text" id="username" name="user" placeholder="Gebruikersnaam" maxlength="25" required></br>
                 <input type="password" id="pswrd" name="ps" placeholder="Wachtwoord" maxlength="25" required>
@@ -20,7 +30,7 @@
                 <input type="button" value="Nieuwe gebruiker" class="greenBtn" onclick="$('.newUserForm').css('display', 'Block');
                                                                                         $('.loginForm').css('display', 'none')">
             </form>
-            <form action="newUserPhp" method="post" class="newUserForm userForm" style="display: none;">
+            <form action="#" method="post" class="newUserForm userForm" style="display: none;">
                     <h1>Project planning Login</h1>
                     <input type="text" name="newUserName" placeholder="Gewenste gebruikersnaam"></br>
                     <input type="text" name="newPsWrd" placeholder="Nieuw wachtwoord">

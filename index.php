@@ -19,6 +19,7 @@
         header( 'Location: loginStart.php' );
     }
     
+    //Set time out on session
     $time = $_SERVER['REQUEST_TIME'];
     $timeout_duration = 10;
 

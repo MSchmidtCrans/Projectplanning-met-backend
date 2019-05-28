@@ -1,5 +1,9 @@
 <?php
 
+// Start the session
+session_start();
+  
+
 header('Content-type: application/json; charset=utf-8');
 
 $myJson=$_POST['jsonObj'];

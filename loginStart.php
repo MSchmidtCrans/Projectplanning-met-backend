@@ -32,9 +32,11 @@
             </form>
             <form action="#" method="post" class="newUserForm userForm" style="display: none;">
                     <h1>Project planning Login</h1>
-                    <input type="text" name="newUserName" placeholder="Gewenste gebruikersnaam"></br>
-                    <input type="text" name="newPsWrd" placeholder="Nieuw wachtwoord">
-                    <input type="text" name="newMailAdrs" placeholder="Uw mail adres">
+                    <input type="text" id="newusername" name="newUserName" placeholder="Gewenste gebruikersnaam"></br>
+                    <input type="text" id="newpswrd" name="newPsWrd" placeholder="Nieuw wachtwoord">
+                    <input type="text" id="newfirstname" name="newFirstName" placeholder="Voornaam">
+                    <input type="text" id="newlastname" name="newLastName" placeholder="Achternaam">
+                    <input type="email" id="newmailadress" name="newMailAdrs" placeholder="Uw mail adres">
                     <input type="button" value="Opslaan" class="newUserBtn greenBtn">
                     <input type="button" value="Annuleren" class="cancelBtn redBtn" onclick="$('.newUserForm').css('display', 'None');
                                                                                     $('.loginForm').css('display', 'block')">

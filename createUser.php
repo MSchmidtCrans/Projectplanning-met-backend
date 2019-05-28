@@ -1,7 +1,8 @@
 <?php
 
-    // Start the session
-    session_start();
+// Start the session
+session_start();
+  
 
 header('Content-type: application/json; charset=utf-8');
 
@@ -21,27 +22,31 @@ try {
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
+    //Insert new data to database 
+    
+    $sql = "INSERT INTO users (username, firstname, lastname, passwrd, mailadress)
+    VALUES ('$dataFields->username', '$dataFields->firstname', '$dataFields->lastname', '$dataFields->passwrd', '$dataFields->mailadress')";    
+    $conn->exec($sql);
+
+    //Get last inserted record to bounce back to js
+    $last_id = $conn->lastInsertId();
+
     //Prepare and execute mysql query
-    $adressquery = $conn->prepare("SELECT * FROM users WHERE username='$dataFields->username'");
+    $adressquery = $conn->prepare("SELECT * FROM users WHERE id=$last_id");
     $adressquery->execute();
 
     //Set array to receive record
-    $person = array();
+    $user = array();
     
     //Loop through all rows from table
     foreach($adressquery as $item) {   
 
     //Add person array
-    $person = $item;
+    $user = $item;
     }
 
-    //Set user to true if user password exists and password is correct
-    $_SESSION['loggedin'] = true;
-    $_SESSION['username'] = $dataFields->$username;
-
     //Sent array as JSON
-    echo json_encode($person);
-
+    echo json_encode($user);
     }
 
     catch(PDOException $e)

@@ -20,7 +20,7 @@ $(document).ready(function(){
             //Upon succes
             success: function(result) { 
                if (result){console.log('succes')};
-               console.log(result);
+               //console.log(result);
                if (result.passwrd === pswrd){ 
                    window.open("http://10.1.254.73/Projectplanning-met-backend/index.php", "_self");
                 } else {
@@ -37,11 +37,6 @@ $(document).ready(function(){
     })
 
     $(".newUserBtn").click(function() {
-        let username = $("#newusername").val();
-        let pswrd = $("#newpswrd").val();
-        let mailadress = $("#newmailadress").val();
-        let firstname = $("#firstname").val();
-        let lastname = $("#lastname");
 
         //Create json object
         let jsonObj = {};

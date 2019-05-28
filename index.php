@@ -15,10 +15,21 @@
     // Start the session
     session_start();
     
-    if ($_SESSION['loggedin'] != true) {
+    if (!isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] != true)) {
         header( 'Location: loginStart.php' );
     }
     
+    $time = $_SERVER['REQUEST_TIME'];
+    $timeout_duration = 10;
+
+    if (isset($_SESSION['LAST_ACTIVITY']) && ($time - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
+        session_unset();
+        session_destroy();
+        session_start();
+        }
+
+        $_SESSION['LAST_ACTIVITY'] = $time;
+
     ?>
 
 </head>

@@ -45,31 +45,51 @@ $(document).ready(function(){
         jsonObj.mailadress = $("#newmailadress").val();
         jsonObj.firstname = $("#newfirstname").val();
         jsonObj.lastname = $("#newlastname").val();
-        console.log(jsonObj);
         
-        //Ajaxcall to create new record in database
+        //Check if username already exists (must be unique!!)
+        //Ajaxcall to lookup username
         $.ajax({
-            url: "createUser.php",
+            url: "checkUser.php",
             data: {jsonObj: JSON.stringify(jsonObj)},
             type: "POST",
             dataType : "JSON",
    
             //Upon succes
             success: function(result) { 
-               if (result){console.log('succes')};
-               console.log(result);
-               alert('Uw nieuwe account is succesvol aangemaakt. U kunt nu inloggen met uw gebruikersnaam en wachtwoord.');
-               $(".newUserForm")[0].reset();
-               $('.newUserForm').css('display', 'none');
-                $('.loginForm').css('display', 'block');
-            },
-   
-            //Upon error
-            error: function(XMLHttpRequest, textStatus, errorThrown) { 
-               alert("Status: " + textStatus); alert("Error: " + errorThrown); 
-               }  
-            })
+               if (result != "") {
+               alert('Gebruikersnaam is helaas al in gebruik. Kies een andere gebruikersnaam alstublieft.')
+               $("#newusername").val("");
+               } else {          
 
+                        //Ajaxcall to create new record in database
+                        $.ajax({
+                            url: "createUser.php",
+                            data: {jsonObj: JSON.stringify(jsonObj)},
+                            type: "POST",
+                            dataType : "JSON",
+                
+                            //Upon succes
+                            success: function(result) { 
+                            if (result){console.log('succes')};
+                            console.log(result);
+                            alert('Uw nieuwe account is succesvol aangemaakt. U kunt nu inloggen met uw gebruikersnaam en wachtwoord.');
+                            $(".newUserForm")[0].reset();
+                            $('.newUserForm').css('display', 'none');
+                                $('.loginForm').css('display', 'block');
+                            },
+                
+                            //Upon error
+                            error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                            alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+                            }  
+                            })
+                        }
+                    },
+        //Upon error
+        error: function(XMLHttpRequest, textStatus, errorThrown) { 
+           alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+           }  
+        })
     })
 });
 

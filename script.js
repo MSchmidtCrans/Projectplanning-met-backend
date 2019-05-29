@@ -1,5 +1,25 @@
 $(document).ready(function(){
 
+//Ajaxcall to get username
+$.ajax({
+    url: "getuser.php",
+    type: "GET",
+    dataType : "TEXT",
+
+    //Upon succes
+    success: function(result) { 
+       $("#usr").text(result);
+       console.log($("#usr").val());
+    },
+
+    //Upon error
+    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+       alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+       }  
+    })
+
+
+
 //Get values at buttonclick in activity modal
 $("#actSubmitBtn").click(function() {
 

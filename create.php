@@ -9,6 +9,10 @@ header('Content-type: application/json; charset=utf-8');
 $myJson=$_POST['jsonObj'];
 $dataFields = json_decode($myJson);
 
+if (isset($_SESSION['username'])) {
+    $usernameLogIn = $_SESSION['username'];
+} else {$usernameLogIn = 'mislukt';}
+
 
 $servername = "localhost";
 $username = "phpdb";
@@ -23,8 +27,8 @@ try {
     
     //Insert new data to database 
     
-    $sql = "INSERT INTO tasks (textvalue, urgencyvalue)
-    VALUES ('$dataFields->action', '$dataFields->urgency')";    
+    $sql = "INSERT INTO tasks (username, textvalue, urgencyvalue)
+    VALUES ('$usernameLogIn', '$dataFields->action', '$dataFields->urgency')";    
     $conn->exec($sql);
 
     //Get last inserted record to bounce back to js

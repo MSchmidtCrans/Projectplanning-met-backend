@@ -15,13 +15,14 @@
     // Start the session
     session_start();
     
-    if (!isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] != true)) {
+    if ($_SESSION['loggedin'] == false) {
         header( 'Location: loginStart.php' );
     }
     
+    /*Disabled time out function
     //Set time out on session
     $time = $_SERVER['REQUEST_TIME'];
-    $timeout_duration = 10;
+    $timeout_duration = 300;
 
     if (isset($_SESSION['LAST_ACTIVITY']) && ($time - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
         session_unset();
@@ -30,13 +31,14 @@
         }
 
         $_SESSION['LAST_ACTIVITY'] = $time;
-
+    */
     ?>
 
 </head>
 <body>
     <div class="header">
         <p><h1>PROJECT PLANNING</h1></p>
+        <p><h2><span id="usr">username</span></h2></p>
     </div>
 
     <!--Columns-->

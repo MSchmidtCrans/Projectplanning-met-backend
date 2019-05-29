@@ -30,6 +30,7 @@ try {
     //Get last inserted record to bounce back to js
     $last_id = $conn->lastInsertId();
 
+    /*
     //Creat new contacts and planborden tables for new user
     $tablename = ($dataFields->username).'contacts';
     $sql = "CREATE TABLE $tablename(id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -41,6 +42,8 @@ try {
     $sql = "CREATE TABLE $tablename(id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             planname VARCHAR(30))";
     $conn->exec($sql);
+    */
+
 
     //Prepare and execute mysql query
     $adressquery = $conn->prepare("SELECT * FROM users WHERE id=$last_id");
